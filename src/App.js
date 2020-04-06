@@ -46,7 +46,9 @@ class App extends Component {
             handleSelectLowerCase={this.handleSelectLowerCase}
           />
         </div>
-        {this.renderEmployee()}
+        <div className="row">
+          {this.renderEmployee()}
+        </div>
       </div>
     );
   }
