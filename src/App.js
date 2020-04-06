@@ -16,9 +16,19 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmitSearch = (event) => {};
+  handleSubmitSearch = (event) => {
+    event.preventDefault();
+    this.state({
+      input: '',
+      search: this.state.input,
+      category: '',
+      selected: this.state.category
+    })
+  };
 
-  renderEmployee(category) {}
+  renderEmployee(category) {
+    return db.map((employee, i) => <Card employee={employee} key={i}/>)
+  }
 
   handleSelectLowerCase = (event) => {
     this.setState({ category: event.target.value.toLowerCase() });
@@ -35,9 +45,8 @@ class App extends Component {
             handleSubmitSearch={this.handleSubmitSearch}
             handleSelectLowerCase={this.handleSelectLowerCase}
           />
-          <Card/>
         </div>
-        
+        {this.renderEmployee()}
       </div>
     );
   }
